@@ -64,7 +64,7 @@
                     android:layout_height="wrap_content"
                     android:inputType="textEmailAddress"
                     android:drawableEnd="@drawable/user_icon"
-                    android:id="@+id/txtEmail"/>
+                    android:id="@+id/txtEmail" android:minHeight="48dp" android:hint="test@test.com"/>
             <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -75,7 +75,7 @@
                     android:layout_height="wrap_content"
                     android:inputType="textPassword"
                     android:drawableEnd="@drawable/password_icon"
-                    android:id="@+id/txtPassword"/>
+                    android:id="@+id/txtPassword" android:hint="******"/>
             <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
@@ -93,6 +93,14 @@
                     android:layout_margin="10dp"
                     android:onClick="login"
                     android:id="@+id/btnLogin"/>
+            <TextView
+                    android:text="Not an account yet?"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" android:id="@+id/textView"/>
+            <Button
+                    android:text="Sign Up"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" android:id="@+id/btnSignUp" android:onClick="signUp"/>
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 </RelativeLayout>
