@@ -4,7 +4,7 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent" xmlns:app="http://schemas.android.com/apk/res-auto"
-        tools:context=".MainActivity"
+        tools:context=".SignUpActivity"
         android:background="@drawable/bg">
 
     <LinearLayout
@@ -22,7 +22,7 @@
         <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Login"
+                android:text="Sign Up"
                 android:textStyle="bold"
                 android:fontFamily="@font/roboto_mono_bold"
                 android:textSize="32sp"
@@ -50,11 +50,23 @@
             <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Please put your login data"
+                    android:text="Please put your Sign Up data"
                     android:alpha="0.7"/>
             <View
                     android:layout_width="wrap_content"
                     android:layout_height="20dp"/>
+            <TextView
+                    android:text="Name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" android:id="@+id/textView2" android:alpha="0.7"/>
+            <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="text"
+                    android:ems="10"
+                    android:id="@+id/txtName" android:alpha="0.7"
+                    android:hint="Ej: Test Test"
+                    android:autofillHints=""/>
             <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -65,8 +77,7 @@
                     android:layout_height="wrap_content"
                     android:inputType="textEmailAddress"
                     android:drawableEnd="@drawable/user_icon"
-                    android:id="@+id/txtEmail"
-                    android:minHeight="48dp"
+                    android:id="@+id/txtEmail" android:minHeight="48dp"
                     android:hint="test@test.com"
                     android:autofillHints=""/>
             <TextView
@@ -79,32 +90,26 @@
                     android:layout_height="wrap_content"
                     android:inputType="textPassword"
                     android:drawableEnd="@drawable/password_icon"
-                    android:id="@+id/txtPassword" android:hint="******"/>
-            <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-                <CheckBox
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Remember me"
-                        android:alpha="0.7"/>
-            </RelativeLayout>
+                    android:id="@+id/txtPassword"
+                    android:hint="******"
+                    android:autofillHints=""/>
             <com.google.android.material.button.MaterialButton
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Login"
+                    android:text="Sign Up"
                     app:cornerRadius="32dp"
                     android:layout_margin="10dp"
-                    android:onClick="login"
-                    android:id="@+id/btnLogin"/>
+                    android:onClick="signUp"
+                    android:id="@+id/btnSignUp"/>
             <TextView
-                    android:text="Not an account yet?"
+                    android:text="Already have an account?"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" android:id="@+id/textView"/>
             <Button
-                    android:text="Sign Up"
+                    android:text="Login"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" android:id="@+id/btnSignUp" android:onClick="signUp"/>
+                    android:layout_height="wrap_content" android:id="@+id/btnLogin"
+                    android:onClick="login"/>
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 </RelativeLayout>
