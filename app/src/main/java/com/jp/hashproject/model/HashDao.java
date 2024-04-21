@@ -10,10 +10,10 @@ public interface HashDao {
     List<Hash> getAll();
     @Insert
     void insert(Hash... hashes);
-    @Query("SELECT * FROM Hash WHERE id = :hash")
-    Hash find(Hash hash);
+    @Query("SELECT * FROM Hash WHERE id = :id")
+    Hash findById(int id);
     @Update
-    Hash update(Hash hash);
+    void update(Hash hash);
     @Delete
     void delete(Hash hash);
 }

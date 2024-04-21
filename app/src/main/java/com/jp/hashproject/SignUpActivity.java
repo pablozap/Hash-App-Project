@@ -37,7 +37,7 @@ public class SignUpActivity extends AppCompatActivity {
         String name = txtName.getText().toString(),
                 email = txtEmail.getText().toString(),
                 password = txtPassword.getText().toString();
-        //Verify if email is already and database, signUp the user if it´s not and change to Log In Activity
+        //Verify if email is already and database, signUp the user if it´s not and change to Log-In-Activity
         try {
             Boolean verify = appDataBase.userDao().verifyExistingEmail(email);
             if (!verify) {
@@ -50,7 +50,7 @@ public class SignUpActivity extends AppCompatActivity {
             }
 
         } catch (Exception error) {
-            System.out.println("Unexpected error:");
+            Log.i("Error", error.getMessage());
         }
     }
 
