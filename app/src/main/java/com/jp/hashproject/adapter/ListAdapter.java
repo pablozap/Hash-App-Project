@@ -37,10 +37,14 @@ public class ListAdapter extends ArrayAdapter<Hash> {
         Hash hash = hashList.get(position);
 
         TextView tvItemFileName = view.findViewById(R.id.tvItemFileName);
+        TextView tvItemFilePath = view.findViewById(R.id.tvItemFilePath);
         TextView tvItemDate = view.findViewById(R.id.tvItemDate);
+        TextView tvItemHash = view.findViewById(R.id.tvItemHash);
 
         tvItemFileName.setText(hash.fileName);
+        tvItemFilePath.setText(hash.filePath);
         tvItemDate.setText(hash.date);
+        tvItemHash.setText(hash.hash);
 
         return view;
     }

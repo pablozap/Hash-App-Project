@@ -27,6 +27,19 @@
             android:text=" " />
 
         <TextView
+            android:id="@+id/textView6"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:alpha="0.7"
+            android:text="Ubicacion del archivo:" />
+
+        <TextView
+            android:id="@+id/tvItemFilePath"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text=" " />
+
+        <TextView
             android:id="@+id/textView9"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -35,6 +48,18 @@
 
         <TextView
             android:id="@+id/tvItemDate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text=" " />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:alpha="0.7"
+            android:text="Hash del archivo:" />
+
+        <TextView
+            android:id="@+id/tvItemHash"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text=" " />
