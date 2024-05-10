@@ -39,7 +39,10 @@ public class MainActivity extends AppCompatActivity {
         User user = appDataBase.userDao().login(email, password);
         if(user != null){
             Log.i("Logging", "Successful");
-            System.out.println(user.getName());
+            System.out.println(user.getId());
+            Intent hashListActivity = new Intent(this, HashListActivity.class);
+            hashListActivity.putExtra("user", user);
+            startActivity(hashListActivity);
         }else{
             Log.i("Logging", "Failed");
         }

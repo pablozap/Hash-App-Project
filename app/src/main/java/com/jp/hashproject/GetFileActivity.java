@@ -22,10 +22,12 @@ import androidx.core.content.ContextCompat;
 import androidx.room.Room;
 import com.jp.hashproject.model.AppDataBase;
 import com.jp.hashproject.model.Hash;
+import com.jp.hashproject.model.User;
 import com.jp.hashproject.util.RealPathUtil;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.net.URISyntaxException;
 import java.security.MessageDigest;
 import java.util.Calendar;
 
@@ -34,6 +36,7 @@ public class GetFileActivity extends AppCompatActivity {
     String fileName, date, filePath, hash;
     Hash file;
     TextView tvFileName, tvDate, tvFilePath, tvHash;
+    User user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,10 +50,17 @@ public class GetFileActivity extends AppCompatActivity {
                         "dbProject"
                 ).allowMainThreadQueries().
                 build();
+        if(getIntent().hasExtra("user")){
+            user = (User) getIntent().getExtras().get("user");
+            System.out.println(user);
+        }
+
         tvFileName = findViewById(R.id.tvFileName);
         tvDate = findViewById(R.id.tvDate);
         tvFilePath = findViewById(R.id.tvFilePath);
         tvHash = findViewById(R.id.tvHash);
+
+
     }
 
 
@@ -74,7 +84,7 @@ public class GetFileActivity extends AppCompatActivity {
                     date = getActualDate();
                     hash = generateSHA256Hash(filePath);
 
-                    file = new Hash(fileName, filePath, date, hash);
+                    file = new Hash(user.getId() ,fileName, filePath, date, hash);
                     // Mostrar los datos en los TextView
                     tvFileName.setText(file.fileName);
                     tvDate.setText(file.date);
@@ -85,14 +95,20 @@ public class GetFileActivity extends AppCompatActivity {
     );
 
     public void uploadHash(View view){
-        if(file != null){
-            appDataBase.hashDao().insert(file);
-            Log.i("Hash", "Hash uploaded successfully");
-            Intent hashListIntent = new Intent(this, HashListActivity.class);
-            startActivity(hashListIntent);
-        }else{
-            Toast.makeText(this, "File couldn´t upload successfully", Toast.LENGTH_SHORT).show();
+        try{
+            if(file != null){
+                appDataBase.hashDao().insert(file);
+                Log.i("Hash", "Hash uploaded successfully");
+                Intent hashListIntent = new Intent(this, HashListActivity.class);
+                hashListIntent.putExtra("user", user);
+                startActivity(hashListIntent);
+            }else{
+                Toast.makeText(this, "File couldn´t upload successfully", Toast.LENGTH_SHORT).show();
+            }
+        }catch (Exception e){
+            Toast.makeText(this, "File couldn´t upload successfully \n" + e.getMessage() , Toast.LENGTH_SHORT).show();
         }
+
     }
     public void openFileDialog(View view) {
         Intent data = new Intent(Intent.ACTION_OPEN_DOCUMENT);

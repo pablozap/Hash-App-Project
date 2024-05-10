@@ -105,11 +105,14 @@
                     android:text="Already have an account?"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" android:id="@+id/textView"/>
+
             <Button
-                    android:text="Login"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" android:id="@+id/btnLogin"
-                    android:onClick="login"/>
+                android:id="@+id/btnLogin"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="40dp"
+                android:onClick="login"
+                android:text="Login" />
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 </RelativeLayout>
