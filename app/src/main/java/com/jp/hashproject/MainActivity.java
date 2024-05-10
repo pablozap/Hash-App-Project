@@ -1,8 +1,10 @@
 package com.jp.hashproject;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.util.Log;
 import android.view.View;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
@@ -14,6 +16,7 @@ public class MainActivity extends AppCompatActivity {
 
     AppDataBase appDataBase = null;
     EditText txtEmail, txtPassword;
+    CheckBox cbRemember;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,6 +32,11 @@ public class MainActivity extends AppCompatActivity {
 
         txtEmail = findViewById(R.id.txtEmail);
         txtPassword = findViewById(R.id.txtPassword);
+        cbRemember = findViewById(R.id.chkRemember);
+
+        SharedPreferences sharedPreferences =  getSharedPreferences("User", MODE_APPEND);
+        txtEmail.setText(sharedPreferences.getString("email", ""));
+        txtPassword.setText(sharedPreferences.getString("password", ""));
 
     }
 
@@ -39,7 +47,13 @@ public class MainActivity extends AppCompatActivity {
         User user = appDataBase.userDao().login(email, password);
         if(user != null){
             Log.i("Logging", "Successful");
-            System.out.println(user.getId());
+            if (cbRemember.isChecked()){
+                SharedPreferences sharedPreferences = getSharedPreferences("User", MODE_PRIVATE);
+                SharedPreferences.Editor editor = sharedPreferences.edit();
+                editor.putString("email", email);
+                editor.putString("password", password);
+                editor.apply();
+            }
             Intent hashListActivity = new Intent(this, HashListActivity.class);
             hashListActivity.putExtra("user", user);
             startActivity(hashListActivity);
