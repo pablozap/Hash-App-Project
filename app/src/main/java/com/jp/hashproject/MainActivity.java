@@ -1,5 +1,6 @@
 package com.jp.hashproject;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.util.Log;
@@ -34,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
         txtPassword = findViewById(R.id.txtPassword);
         cbRemember = findViewById(R.id.chkRemember);
 
-        SharedPreferences sharedPreferences =  getSharedPreferences("User", MODE_APPEND);
+        SharedPreferences sharedPreferences =  getSharedPreferences("User", Context.MODE_PRIVATE);
         txtEmail.setText(sharedPreferences.getString("email", ""));
         txtPassword.setText(sharedPreferences.getString("password", ""));
 
